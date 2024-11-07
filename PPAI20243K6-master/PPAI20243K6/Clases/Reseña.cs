@@ -13,6 +13,8 @@ namespace PPAI20243K6.Clases
         private DateTime fechaReseña { get; set; }
         private int puntaje { get; set; }
 
+        private Vino vino { get; set; }
+
         public Reseña(string comentarioRes, bool esPremiumRes, DateTime fechaReseñaRes, int puntajeRes)
         {
             comentario = comentarioRes;
@@ -65,6 +67,11 @@ namespace PPAI20243K6.Clases
         public int getPuntaje()
         {
             return puntaje;
+        }
+
+        internal void setVino(Vino vino)
+        {
+            this.vino = vino;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +12,23 @@ namespace PPAI20243K6.Clases
         private string descripcionReg { get; set; }
         private string nombreReg { get; set; }
 
-        private Provincia provincia { get; set; }
-        private Pais pais { get; set; }
+        private Provincia provinciaRegion { get; set; }
 
-        public RegionVitivinicola(string descripcion, string nombre, string nombrePais)
+        public RegionVitivinicola(string descripcion, string nombre, Provincia provincia)
         {
            
-            descripcionReg = descripcion;
-            
-            nombreReg = nombre;
-           
-            pais = new Pais(nombrePais);
+            this.descripcionReg = descripcion;
+
+            this.nombreReg = nombre;
+
+            this.provinciaRegion = provincia;
+          
         }
         public int ContarBodegas()
         {
             // Implementación del método para contar bodegas
             return 0;
         }
-        public void agregarProvincia( string nombreProv, string nomPais)
-        {
-            this.provincia = new Provincia(nombreProv, nomPais);
-        }
-
         public string getNombre()
         {
             return nombreReg;
@@ -43,16 +39,17 @@ namespace PPAI20243K6.Clases
         }
         public string buscarProvPais()
         {
-            {
-                if (provincia != null)
-                {
-                    return provincia.buscarPais();
-                }
-                else
-                {
-                    return pais.getNombre();
-                }
-            }
+            string provPais = provinciaRegion.getNombre();
+
+            provPais = provPais + ", " + provinciaRegion.buscarPais();
+            
+            return provPais;
         }
+
+        public void setProvincia(Provincia provincia)
+        {
+            this.provinciaRegion = provincia;
+        }
+
     }
 }

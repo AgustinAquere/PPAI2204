@@ -8,33 +8,40 @@ namespace PPAI20243K6.Clases
 {
     internal class Provincia
     {
-        private string nombreProv { get; set; }
-        private Pais paisP {get; set; }
+        private Pais pais;
+        private string nombre { get; set; }
+        private List<RegionVitivinicola> regiones;
 
-        public Provincia(string nombre, string nombrePais)
+        public Provincia(string nombre, Pais pais)
         {
-            nombreProv = nombre;
-            
-            paisP = new Pais(nombrePais);
+            this.nombre = nombre;
+            this.pais = pais;
         }
+
         public int ContarRegiones()
         {
             // Implementación del método para contar regiones
             return 0;
         }
 
-        public void agregarPais( string nombre)
-        {
-            this.paisP = new Pais(nombre);
-        }
+        public string getNombre() { return nombre; }
         public void MostrarRegiones()
         {
             // Implementación del método para mostrar regiones
         }
 
-        public string buscarPais()
+        public void agregarRegiones(RegionVitivinicola region)
         {
-            return paisP.getNombre();
+            this.regiones.Add(region);
+            region.setProvincia(this);
         }
+
+        internal void setPais(Pais pais)
+        {
+            this.pais = pais;
+        }
+
+        internal string buscarPais() { return pais.getNombre(); }
+
     }
 }

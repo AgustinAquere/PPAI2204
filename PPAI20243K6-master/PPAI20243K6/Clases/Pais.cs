@@ -8,10 +8,17 @@ namespace PPAI20243K6.Clases
 {
     internal class Pais
     {
-        private string nombrePais { get; set; }
+        private string nombrePais;
+        private List<Provincia> provincias;
         public Pais(string nombre)
         {
             nombrePais = nombre;
+        }
+
+        public void agregarProvincia(Provincia provincia)
+        {
+            this.provincias.Add(provincia);
+            provincia.setPais(this);
         }
 
         public int contarBodega()

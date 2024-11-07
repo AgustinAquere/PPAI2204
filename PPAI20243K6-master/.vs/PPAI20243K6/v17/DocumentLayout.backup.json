@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|h:\\usuario\\desktop\\ppai2204\\ppai20243k6-master\\ppai20243k6\\clases\\gestorgenerarrankingvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\gestorgenerarrankingvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|h:\\usuario\\desktop\\ppai2204\\ppai20243k6-master\\ppai20243k6\\clases\\vino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\vino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\ppai20243k6\\pantallarankingvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\pantallarankingvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\ppai20243k6\\clases\\iteradorrese\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\iteradorrese\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|h:\\usuario\\desktop\\ppai2204\\ppai20243k6-master\\ppai20243k6\\clases\\iiterador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\iiterador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|h:\\usuario\\desktop\\ppai2204\\ppai20243k6-master\\ppai20243k6\\clases\\iteradorvarietal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\iteradorvarietal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\ppai20243k6\\clases\\persistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\persistencia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|h:\\usuario\\desktop\\ppai2204\\ppai20243k6-master\\ppai20243k6\\clases\\iteradorvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\iteradorvinos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\ppai20243k6\\clases\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F944221-F1EC-4640-B01E-B7637D411D14}|PPAI20243K6\\PPAI20243K6.csproj|solutionrelative:ppai20243k6\\clases\\provincia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 206,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Iiterador.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Iiterador.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\Iiterador.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Iiterador.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\Iiterador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T06:20:43.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IteradorVinos.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorVinos.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\IteradorVinos.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorVinos.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\IteradorVinos.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T05:47:24.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IteradorVarietal.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorVarietal.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\IteradorVarietal.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorVarietal.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\IteradorVarietal.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T05:47:11.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Vino.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Vino.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\Vino.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Vino.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\Vino.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAEwJwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T05:44:47.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IteradorRese\u00F1a.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorRese\u00F1a.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\IteradorRese\u00F1a.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\IteradorRese\u00F1a.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\IteradorRese\u00F1a.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T04:53:55.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PantallaRankingVinos.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\PantallaRankingVinos.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\PantallaRankingVinos.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\PantallaRankingVinos.cs",
+              "RelativeToolTip": "PPAI20243K6\\PantallaRankingVinos.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAtwHUAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T05:06:47.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GestorGenerarRankingVinos.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\GestorGenerarRankingVinos.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\GestorGenerarRankingVinos.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\GestorGenerarRankingVinos.cs*",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\GestorGenerarRankingVinos.cs*",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAkwP0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T03:07:05.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Persistencia.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Persistencia.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\Persistencia.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Persistencia.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\Persistencia.cs",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAvwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T02:49:25.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Provincia.cs",
+              "DocumentMoniker": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Provincia.cs",
+              "RelativeDocumentMoniker": "PPAI20243K6\\Clases\\Provincia.cs",
+              "ToolTip": "H:\\Usuario\\Desktop\\PPAI2204\\PPAI20243K6-master\\PPAI20243K6\\Clases\\Provincia.cs",
+              "RelativeToolTip": "PPAI20243K6\\Clases\\Provincia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T04:19:40.786Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

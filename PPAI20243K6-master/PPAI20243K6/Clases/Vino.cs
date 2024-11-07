@@ -19,16 +19,19 @@ namespace PPAI20243K6.Clases
         private string nombre { get; set; }
         private int notaDeCataBodega { get; set; }
         private float precioARS { get; set; }
+
         private List<Reseña> Reseñas;
 
         private List<Varietal> Varietal;
         private Bodega Bodega;
-        private double promedio;
+        private double promedio = 0;
         List<int> puntajes = new List<int>();
+        List<int> puntajesNoPremium = new List<int>();
 
 
 
-        public Vino(int añada, DateTime fechaActualizacion, bool imagenEtiqueta, string nombre, int notaCata, float precioARS, string coordUbicacionBodega, string descripBodega, string historiaBodega, string nombreBodega, int periodoActualizacionBodega,string nombreReg, string descripcionReg, string nomPais)
+
+        public Vino(int añada, DateTime fechaActualizacion, bool imagenEtiqueta, string nombre, int notaCata, float precioARS, Bodega bodega)
         {
            
             this.añada = añada;
@@ -37,9 +40,9 @@ namespace PPAI20243K6.Clases
             this.nombre= nombre;
             this.notaDeCataBodega = notaCata;
             this.precioARS = precioARS;
-            Varietal= new List<Varietal>();
-            Reseñas = new List<Reseña>();
-            Bodega = new Bodega(coordUbicacionBodega, descripBodega, historiaBodega, nombreBodega, periodoActualizacionBodega, nombreReg, descripcionReg, nomPais);
+            this.Varietal= new List<Varietal>();
+            this.Reseñas = new List<Reseña>();
+            this.Bodega = bodega;
            
 
         }
@@ -61,13 +64,22 @@ namespace PPAI20243K6.Clases
         }
         public string buscarVarietal()
         {
-            List<string> listDesc = new List<string>();
-            foreach (var i in Varietal)
+            string varietales = "";
+            IIterator<Varietal> iteradorVarietal = CrearIterador(this.Varietal);
+            iteradorVarietal.Primero();
+            while (!iteradorVarietal.HaFinalizado())
             {
-                listDesc.Add(i.getDescripcion());
+                Varietal varietalActual = iteradorVarietal.Actual();
+                if (varietales == "") { varietales = varietalActual.getDescripcion(); }
+                else
+                {
+                    varietales = varietales + ", " + varietalActual.getDescripcion();
+                }
+                iteradorVarietal.Siguiente();
+                Console.WriteLine(varietalActual.getDescripcion());
             }
-            string resultado = string.Join(", ", listDesc);
-            return resultado;
+            Console.WriteLine(varietales);
+            return varietales;
         }
         public string buscarBodega()
         {
@@ -78,12 +90,13 @@ namespace PPAI20243K6.Clases
 
         public void agregarVarietal(Varietal var)
         {
-            Varietal.Add(var);
+            this.Varietal.Add(var);
         }
 
         public void agregarReseña(Reseña res)
         {
-            Reseñas.Add(res);
+            this.Reseñas.Add(res);
+            res.setVino(this);
         }
 
         public void CalcularRanking()
@@ -108,97 +121,84 @@ namespace PPAI20243K6.Clases
             return false;
         }
 
-        
+        public IIterator<Reseña> CrearIterador(List<Reseña> reseñas)
+        {
+            return new IteradorReseña(reseñas);
+        }
+        public IIterator<Varietal> CrearIterador(List<Varietal> varietal)
+        {
+            return new IteradorVarietal(varietal);
+        }
 
         public bool buscarVinosConReseña(DateTime fechaDesde, DateTime fechaHasta, bool premium)
         {
-            // Implementación del método para buscar vinos con reseña
-            bool reseñaValida = false;
-            for (int i = 0; i < this.Reseñas.Count; i++)
-            {
-                if (this.Reseñas[i].esFechaValida(fechaDesde, fechaHasta)&& this.Reseñas[i].sosDeSommelier(premium))
-                {
-                    reseñaValida = true;
-                }
-            }
-            return reseñaValida;
+            IIterator<Reseña> iteradorReseña = CrearIterador(this.Reseñas);
+            iteradorReseña.Primero();
 
-        }
-        public double calcularPromedioDeSommelierEnPeriodo(bool premium)
-        {
-            // Implementación del método para calcular puntaje promedio
-            double promedio = calcularPuntajePromedio(premium);
-            return Math.Round(promedio, 1);
-        }
-        public double calcularPuntajePromedio(bool premium)
-        {
-            // Implementación del método para calcular puntaje promedio
-            List<int> puntajes = new List<int>();
-            List<int> puntajesNoPremium = new List<int>();
-            for (int i = 0; i < this.Reseñas.Count; i++)
+            // Mientras no haya llegado al final de la lista
+            while (!iteradorReseña.HaFinalizado())
             {
-                if (Reseñas[i].EsPremium())//== premium)
+                Reseña reseñaActual = iteradorReseña.Actual();
+
+                // Si pasa los filtros
+                if (iteradorReseña.ComprobarFiltros(reseñaActual, fechaDesde, fechaHasta, premium))
                 {
-                    puntajes.Add(this.Reseñas[i].getPuntaje());
+                    return true;
+                }
+                // Solo avanzamos al siguiente elemento si no ha terminado la lista
+                iteradorReseña.Siguiente();
+            }
+
+            // Si no encontramos ninguna reseña que pase los filtros, retornamos false
+            
+            return false;
+        }
+
+        public void CalcularPromedioDeSommelierEnPeriodo(bool premium)
+        {
+
+            IIterator<Reseña> iteradorReseña = CrearIterador(this.Reseñas);
+            iteradorReseña.Primero();
+            while (iteradorReseña.HaFinalizado() == false)
+            {
+                Reseña reseñaActual = iteradorReseña.Actual();
+                if (premium)
+                {
+                    if (reseñaActual.EsPremium())
+                    {
+                        puntajes.Add(reseñaActual.getPuntaje());
+                    }
                 }
                 else
                 {
-                    puntajesNoPremium.Add(this.Reseñas[i].getPuntaje());
+                    if (!(reseñaActual.EsPremium()))
+                    {
+                        puntajesNoPremium.Add(reseñaActual.getPuntaje());
+                    }
                 }
-                                                  
-            }
-            if (puntajes == null || puntajes.Count == 0)
-            {
-                //throw new ArgumentException("La lista no puede estar vacía o ser nula");
+                iteradorReseña.Siguiente();
             }
 
+            double prom = CalcularPuntajePromedio(puntajes);
+            setPromedio(prom);
+            
+        }
+        public double CalcularPuntajePromedio(List<int> puntajes)
+        {
             double suma = 0;
             double prom = 0;
-            if (premium)
+            foreach (double numero in puntajes)
             {
-                foreach (double numero in puntajes)
-                {
-                    suma += numero;
-                }
-                prom= suma / puntajes.Count;
+                suma += numero;
             }
-            else
+            if (puntajes.Count > 0)
             {
-                foreach (double numero in puntajesNoPremium)
-                {
-                    suma += numero;
-                }
-                prom = suma / puntajesNoPremium.Count;
-            }
-
-
+                prom = suma / puntajes.Count;
+            } else { prom = 0; }
             return prom;
         }
         public string getArrayPuntajes(bool premium)
         {
-            // Implementación del método para obtener los puntajes de las reseñas
-            List<int> puntajes = new List<int>();
-            List<int> puntajesNoPremium = new List<int>();
-
-            for (int i = 0; i < this.Reseñas.Count; i++)
-            {
-                if (this.Reseñas[i].EsPremium())
-                {
-                    puntajes.Add(this.Reseñas[i].getPuntaje());
-                }
-                else
-                {
-                    puntajesNoPremium.Add(this.Reseñas[i].getPuntaje());
-                }
-                
-            }
-            
-
-            if (puntajes == null || puntajes.Count == 0)
-            {
-                //throw new ArgumentException("La lista no puede estar vacía o ser nula");
-            }
-
             string resultado;
 
             if (premium)
@@ -211,8 +211,6 @@ namespace PPAI20243K6.Clases
             }
 
             return resultado;
-
-            
         }
     }
 }

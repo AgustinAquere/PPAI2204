@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PPAI20243K6.Clases
 {
-    internal class Varietal
+    public class Varietal
     {
         private string descripcion { get; set; }
         private decimal porcentajeComposicion { get; set; }

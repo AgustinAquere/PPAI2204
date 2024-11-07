@@ -14,17 +14,16 @@ namespace PPAI20243K6.Clases
         private string historia { get; set; }
         private string nombre { get; set; }
         private int periodoActualizacion { get; set; }
-        //private List<Reseña> Reseñas;
         private RegionVitivinicola regionVitivinicola;
 
-        public Bodega(string coordUbicacionBodega, string descripBodega, string historiaBodega, string nombreBodega, int periodoActualizacionBodega, string nombreReg, string descripcionReg, string nomPais)
+        public Bodega(string coordUbicacionBodega, string descripBodega, string historiaBodega, string nombreBodega, int periodoActualizacionBodega, RegionVitivinicola region)
         {
             coordenadasUbicacion = coordUbicacionBodega;
             descripcion = descripBodega;
             historia = historiaBodega;
             nombre = nombreBodega;
             periodoActualizacion = periodoActualizacionBodega;
-            regionVitivinicola = new RegionVitivinicola(descripcionReg, nombreReg, nomPais);
+            regionVitivinicola = region;
         }
 
         public int ContarReseñas()
@@ -34,9 +33,9 @@ namespace PPAI20243K6.Clases
         }
 
         
-        public void agregarRegion(string descripcion, string nombre, string nomPais)
+        public void setRegion(RegionVitivinicola region)
         {
-            this.regionVitivinicola = new RegionVitivinicola(descripcion, nombre, nomPais);
+            this.regionVitivinicola = region;
         }
         public string getNombre()
         {
@@ -45,8 +44,8 @@ namespace PPAI20243K6.Clases
         public string buscarRegionYPais()
         {
             string reg = this.regionVitivinicola.getNombre();
-            string pais = this.regionVitivinicola.buscarProvPais();
-            return reg+","+pais;
+            string provPais = this.regionVitivinicola.buscarProvPais();
+            return reg + ", "+ provPais;
         }
     }
 }
