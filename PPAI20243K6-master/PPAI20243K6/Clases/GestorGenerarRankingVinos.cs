@@ -15,9 +15,9 @@ namespace PPAI20243K6.Clases
         private DateTime fechaDesde;
         private DateTime fechaHasta;
         public bool fechasValidas;
-        List<Vino> arrayVinos = new List<Vino>();
         List<Vino> vinosConReseña = new List<Vino>();
-        string arrPuntajes;
+        string Puntajes;
+        List<int> arrPuntajes;
         XLWorkbook workbook = null;
         IXLWorksheet worksheet = null;
         int currentRow = 0;
@@ -27,7 +27,6 @@ namespace PPAI20243K6.Clases
         private string nombreVino;
         private string datosBodega;
         private string varietales;
-        private double calificacionGral;
 
         string connectionString;
         Persistencia persistencia;
@@ -131,11 +130,8 @@ namespace PPAI20243K6.Clases
 
         public void tomarConfirmacion(string tipoReseña, string tipoVisualizacion)
         {
-            // Implementación del método para tomar confirmación
-            //----
             vinosConReseña.Clear();
 
-            //----
             bool premium = false;
             if (tipoReseña == "Sommelier")
             {
@@ -146,66 +142,54 @@ namespace PPAI20243K6.Clases
 
         }
 
-        public IIterator<Vino> CrearIterador(List<Vino> vinosAIterar)
-        {
-            return new IteradorVinos(vinosAIterar);
-        }
-
         public void buscarVinosReseñasPeriodo(bool premium, string tipoVis)
         {
 
-            //Recorremos el array de vinos, para poder obtener los vinos con reseña utilizamos el metoo buscarVinosConReseña
-            //En caso que tengan una reseña con las fechas indicadas y sea premium, se crea un array nuevo de vinos con reseña
-
-            IIterator<Vino> iteradorFiltrado = CrearIterador(vinos);
-            iteradorFiltrado.Primero();
-            while (!iteradorFiltrado.HaFinalizado())
+            for (int i = 0; i < vinos.Count; i++)
             {
-                Vino vinoActual = iteradorFiltrado.Actual();
-                if (vinoActual.buscarVinosConReseña(fechaDesde, fechaHasta, premium))
+                Vino vinoActual = vinos[i];
+                arrPuntajes = vinoActual.buscarVinosConReseña(fechaDesde, fechaHasta, premium);
+                if (arrPuntajes.Count() > 0)
                 {
+                    vinoActual.CalcularPromedioDeSommelierEnPeriodo(arrPuntajes);
                     vinosConReseña.Add(vinoActual);
                 }
-                iteradorFiltrado.Siguiente();
             }
 
-
-
-            //Para los vinos llamamos los metodos para calcular el promedio de puntaje en el periodo y tambien los ordenamos por promedio
-            CalcularPromedioDeSommelierEnPeriodo(vinosConReseña, premium);
-            Console.WriteLine(vinosConReseña.Count());
-
-
             vinosConReseña = ordenarVinoPorPromedio(vinosConReseña);
-            Console.WriteLine(vinosConReseña.Count());
 
 
             if (tipoVis == "excel")
             {
                 workbook = new XLWorkbook();
                 worksheet = workbook.Worksheets.Add("Ranking de Vinos");
-                worksheet.Cell(1, 1).Value = "Promedio";
-                worksheet.Cell(1, 2).Value = "Nombre Vino";
-                worksheet.Cell(1, 3).Value = "Precio";
-                worksheet.Cell(1, 4).Value = "Bodega";
-                worksheet.Cell(1, 5).Value = "Varietal";
+
+                worksheet.Cell(1, 5).Value = "Promedio Puntajes";
+                worksheet.Cell(1, 1).Value = "Nombre Vino";
+                worksheet.Cell(1, 2).Value = "Precio";
+                worksheet.Cell(1, 3).Value = "Bodega";
+                worksheet.Cell(1, 4).Value = "Varietal";
                 worksheet.Cell(1, 6).Value = "Puntajes";
 
-                currentRow = 2;
+                var headerRange = worksheet.Range("A1:F1");
+                headerRange.Style.Font.Bold = true;
+                headerRange.Style.Fill.BackgroundColor = XLColor.LightGray;
+                headerRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                headerRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                headerRange.Style.Border.OutsideBorderColor = XLColor.Black;
 
+                currentRow = 2;
             }
 
-            IIterator<Vino> iteradorVinos = CrearIterador(vinosConReseña);
-            iteradorVinos.Primero();
-            while (iteradorVinos.HaFinalizado() == false)
+            for (int i = 0; i < vinosConReseña.Count; i++)
             {
-                Vino vinoActual = iteradorVinos.Actual();
+                Vino vinoActual = vinosConReseña[i];
                 precioVino = vinoActual.getPrecio();
                 nombreVino = vinoActual.getNombre();
                 promedioVino = vinoActual.getPromedio();
                 datosBodega = vinoActual.buscarBodega();
                 varietales = vinoActual.buscarVarietal();
-                arrPuntajes = vinoActual.getArrayPuntajes(premium);
+                Puntajes = vinoActual.getArrayPuntajes();
 
                 if (tipoVis == "pantalla")
                 {
@@ -233,7 +217,7 @@ namespace PPAI20243K6.Clases
                     fila.Cells.Add(datoVarietal);
 
                     DataGridViewTextBoxCell puntajes = new DataGridViewTextBoxCell();
-                    puntajes.Value = arrPuntajes;
+                    puntajes.Value = Puntajes;
                     fila.Cells.Add(puntajes);
 
                     PantallaAsociada.agregarFilaGrd(fila);
@@ -241,21 +225,25 @@ namespace PPAI20243K6.Clases
                 if (tipoVis == "excel")
                 {
 
-                    worksheet.Cell(currentRow, 1).Value = promedioVino;
-                    worksheet.Cell(currentRow, 2).Value = nombreVino;
-                    worksheet.Cell(currentRow, 3).Value = precioVino;
-                    worksheet.Cell(currentRow, 4).Value = datosBodega;
-                    worksheet.Cell(currentRow, 5).Value = varietales;
-                    worksheet.Cell(currentRow, 6).Value = arrPuntajes;
+                    worksheet.Cell(currentRow, 5).Value = promedioVino;
+                    worksheet.Cell(currentRow, 1).Value = nombreVino;
+                    worksheet.Cell(currentRow, 2).Value = precioVino;
+                    worksheet.Cell(currentRow, 3).Value = datosBodega;
+                    worksheet.Cell(currentRow, 4).Value = varietales;
+                    worksheet.Cell(currentRow, 6).Value = Puntajes;
+
+                    var dataRange = worksheet.Range($"A{currentRow}:F{currentRow}");
+                    dataRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                    dataRange.Style.Border.OutsideBorderColor = XLColor.Black;
+                    dataRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
                     currentRow++;
                 }
-
-                iteradorVinos.Siguiente();
             }
 
             if (tipoVis == "excel")
             {
+                worksheet.Columns().AdjustToContents();
                 // Guardar el archivo Excel
                 string filePath = "H:/Usuario/Desktop/PPAI2204/RankingDeVinos.xlsx";
                 workbook.SaveAs(filePath);
@@ -279,27 +267,10 @@ namespace PPAI20243K6.Clases
         }
 
 
-
-        //Metodo para calcular el promedio de puntaje de los vinos
-        public void CalcularPromedioDeSommelierEnPeriodo(List<Vino> VinosDeSomellier, bool premium)
-        {
-            IIterator<Vino> iteradorVino = CrearIterador(VinosDeSomellier);
-            iteradorVino.Primero();
-            while (iteradorVino.HaFinalizado() == false)
-            {
-                Vino vinoActual = iteradorVino.Actual();
-                vinoActual.CalcularPromedioDeSommelierEnPeriodo(premium);
-                iteradorVino.Siguiente();
-            }
-
-        }
-
-
-
         public void FinCU()
         {
             // Implementación del método para finalizar el caso de uso
-            PantallaAsociada.Close();
+            // PantallaAsociada.Close();
 
         }
     }

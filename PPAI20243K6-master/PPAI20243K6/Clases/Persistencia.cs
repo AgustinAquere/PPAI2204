@@ -203,7 +203,6 @@ namespace PPAI20243K6.Clases
 
         public void desmaterializarVarietal(List<Vino> vinos)
         {
-
             try
             {
                 string query = "SELECT * FROM Varietal";
@@ -220,7 +219,6 @@ namespace PPAI20243K6.Clases
                                 Convert.ToInt32(reader["porcentajeComposicion"])
                                 );
                             vinos[vinoIndex].agregarVarietal(varietal);
-
                         }
                     }
                 }
@@ -244,7 +242,6 @@ namespace PPAI20243K6.Clases
                         while (reader.Read())
                         {
                             int vinoIndex = Convert.ToInt32(reader["id_vino"]) - 1;
-
                             Reseña reseña = new Reseña(
                                 reader["comentario"].ToString(),
                                 Convert.ToBoolean(reader["esPremium"]),

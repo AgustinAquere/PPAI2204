@@ -26,10 +26,6 @@ namespace PPAI20243K6.Clases
         private Bodega Bodega;
         private double promedio = 0;
         List<int> puntajes = new List<int>();
-        List<int> puntajesNoPremium = new List<int>();
-
-
-
 
         public Vino(int añada, DateTime fechaActualizacion, bool imagenEtiqueta, string nombre, int notaCata, float precioARS, Bodega bodega)
         {
@@ -64,28 +60,13 @@ namespace PPAI20243K6.Clases
         }
         public string buscarVarietal()
         {
-            string varietales = "";
-            IIterator<Varietal> iteradorVarietal = CrearIterador(this.Varietal);
-            iteradorVarietal.Primero();
-            while (!iteradorVarietal.HaFinalizado())
-            {
-                Varietal varietalActual = iteradorVarietal.Actual();
-                if (varietales == "") { varietales = varietalActual.getDescripcion(); }
-                else
-                {
-                    varietales = varietales + ", " + varietalActual.getDescripcion();
-                }
-                iteradorVarietal.Siguiente();
-                Console.WriteLine(varietalActual.getDescripcion());
-            }
-            Console.WriteLine(varietales);
-            return varietales;
+            return string.Join(", ", this.Varietal.Select(v => v.getDescripcion()));
         }
         public string buscarBodega()
         {
             string nom=this.Bodega.getNombre();
             string reg = this.Bodega.buscarRegionYPais();
-            return nom+","+reg;
+            return nom+", "+reg;
         }
 
         public void agregarVarietal(Varietal var)
@@ -125,13 +106,11 @@ namespace PPAI20243K6.Clases
         {
             return new IteradorReseña(reseñas);
         }
-        public IIterator<Varietal> CrearIterador(List<Varietal> varietal)
+        public List<int> buscarVinosConReseña(DateTime fechaDesde, DateTime fechaHasta, bool premium)  
         {
-            return new IteradorVarietal(varietal);
-        }
 
-        public bool buscarVinosConReseña(DateTime fechaDesde, DateTime fechaHasta, bool premium)
-        {
+            List<int> puntajesFiltrados = new List<int>();
+
             IIterator<Reseña> iteradorReseña = CrearIterador(this.Reseñas);
             iteradorReseña.Primero();
 
@@ -141,47 +120,21 @@ namespace PPAI20243K6.Clases
                 Reseña reseñaActual = iteradorReseña.Actual();
 
                 // Si pasa los filtros
-                if (iteradorReseña.ComprobarFiltros(reseñaActual, fechaDesde, fechaHasta, premium))
+                if (iteradorReseña.ComprobarFiltros(fechaDesde, fechaHasta, premium))
                 {
-                    return true;
+                    puntajesFiltrados.Add(reseñaActual.getPuntaje());
                 }
                 // Solo avanzamos al siguiente elemento si no ha terminado la lista
                 iteradorReseña.Siguiente();
             }
-
-            // Si no encontramos ninguna reseña que pase los filtros, retornamos false
-            
-            return false;
+            return puntajesFiltrados;
         }
 
-        public void CalcularPromedioDeSommelierEnPeriodo(bool premium)
+        public void CalcularPromedioDeSommelierEnPeriodo(List<int> puntajes)
         {
-
-            IIterator<Reseña> iteradorReseña = CrearIterador(this.Reseñas);
-            iteradorReseña.Primero();
-            while (iteradorReseña.HaFinalizado() == false)
-            {
-                Reseña reseñaActual = iteradorReseña.Actual();
-                if (premium)
-                {
-                    if (reseñaActual.EsPremium())
-                    {
-                        puntajes.Add(reseñaActual.getPuntaje());
-                    }
-                }
-                else
-                {
-                    if (!(reseñaActual.EsPremium()))
-                    {
-                        puntajesNoPremium.Add(reseñaActual.getPuntaje());
-                    }
-                }
-                iteradorReseña.Siguiente();
-            }
-
             double prom = CalcularPuntajePromedio(puntajes);
             setPromedio(prom);
-            
+            this.puntajes = puntajes;
         }
         public double CalcularPuntajePromedio(List<int> puntajes)
         {
@@ -195,22 +148,11 @@ namespace PPAI20243K6.Clases
             {
                 prom = suma / puntajes.Count;
             } else { prom = 0; }
-            return prom;
+            return Math.Round(prom, 2);
         }
-        public string getArrayPuntajes(bool premium)
+        public string getArrayPuntajes()
         {
-            string resultado;
-
-            if (premium)
-            {
-                resultado = string.Join(", ", puntajes);
-            }
-            else
-            {
-                resultado = string.Join(", ", puntajesNoPremium);
-            }
-
-            return resultado;
+            return string.Join(", ", puntajes);
         }
     }
 }

@@ -143,8 +143,6 @@
     <Compile Include="Clases\GestorGenerarRankingVinos.cs" />
     <Compile Include="Clases\Iiterador.cs" />
     <Compile Include="Clases\IteradorReseña.cs" />
-    <Compile Include="Clases\IteradorVarietal.cs" />
-    <Compile Include="Clases\IteradorVinos.cs" />
     <Compile Include="Clases\Pais.cs" />
     <Compile Include="Clases\Persistencia.cs" />
     <Compile Include="Clases\Provincia.cs" />

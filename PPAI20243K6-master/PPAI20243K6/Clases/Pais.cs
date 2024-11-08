@@ -9,7 +9,7 @@ namespace PPAI20243K6.Clases
     internal class Pais
     {
         private string nombrePais;
-        private List<Provincia> provincias;
+        private List<Provincia> provincias = null;
         public Pais(string nombre)
         {
             nombrePais = nombre;

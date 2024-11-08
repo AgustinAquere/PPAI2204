@@ -26,9 +26,9 @@ namespace PPAI20243K6.Clases
             return reseñas[posicion];
         }
 
-        public bool ComprobarFiltros(Reseña reseña, DateTime fechaDesde, DateTime fechaHasta, bool premium)
+        public bool ComprobarFiltros(DateTime fechaDesde, DateTime fechaHasta, bool premium)
         {
-            return reseña.esFechaValida(fechaDesde, fechaHasta) && reseña.sosDeSommelier(premium);
+            return this.Actual().esFechaValida(fechaDesde, fechaHasta) && this.Actual().sosDeSommelier(premium);
         }
 
 

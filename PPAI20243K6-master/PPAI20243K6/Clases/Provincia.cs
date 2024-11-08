@@ -10,7 +10,7 @@ namespace PPAI20243K6.Clases
     {
         private Pais pais;
         private string nombre { get; set; }
-        private List<RegionVitivinicola> regiones;
+        private List<RegionVitivinicola> regiones = null;
 
         public Provincia(string nombre, Pais pais)
         {
